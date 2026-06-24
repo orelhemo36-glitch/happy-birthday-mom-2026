@@ -253,35 +253,14 @@
   var ytPlayer = null;
   var pendingPlayerCreate = false;
 
-  // Repeatedly corrects the playhead until the real song (not a pre-roll ad,
-  // identified by its much longer duration) is confirmed playing from START_SECONDS.
-  // A single seekTo() right after onReady is unreliable: it can be a no-op if the
-  // player hasn't buffered yet, and ads report their own near-zero currentTime.
-  function startSeekCorrection(player) {
-    var attempts = 0;
-    var interval = setInterval(function () {
-      attempts++;
-      try {
-        var dur = player.getDuration();
-        var t = player.getCurrentTime();
-        if (dur > 60 && t < START_SECONDS - 1) {
-          player.seekTo(START_SECONDS, true);
-        } else if (dur > 60 && t >= START_SECONDS - 1) {
-          clearInterval(interval);
-        }
-      } catch (err) {}
-      if (attempts > 30) clearInterval(interval);
-    }, 500);
-  }
-
   function createPlayer() {
     ytPlayer = new YT.Player('ytplayer', {
       videoId: 'OXTjXQBUZs0',
       playerVars: { autoplay: 1, start: START_SECONDS, playsinline: 1, rel: 0 },
       events: {
         onReady: function (e) {
+          e.target.seekTo(START_SECONDS, true);
           e.target.playVideo();
-          startSeekCorrection(e.target);
         }
       }
     });
