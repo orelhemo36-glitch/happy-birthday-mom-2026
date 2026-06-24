@@ -264,18 +264,17 @@
     var isRealVideo = dur > 60; // pre-roll ads report a short duration
     if (isRealVideo && t < START_SECONDS - 1) {
       correctionAttempts++;
-      player.seekTo(START_SECONDS, true);
+      player.loadVideoById({ videoId: 'OXTjXQBUZs0', startSeconds: START_SECONDS });
       setTimeout(function () { maybeCorrectStart(player); }, 800);
     }
   }
 
   function createPlayer() {
     ytPlayer = new YT.Player('ytplayer', {
-      videoId: 'OXTjXQBUZs0',
-      playerVars: { autoplay: 1, start: START_SECONDS, playsinline: 1, rel: 0 },
+      playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
       events: {
         onReady: function (e) {
-          e.target.playVideo();
+          e.target.loadVideoById({ videoId: 'OXTjXQBUZs0', startSeconds: START_SECONDS });
         },
         onStateChange: function (e) {
           if (e.data === YT.PlayerState.PLAYING) maybeCorrectStart(e.target);
