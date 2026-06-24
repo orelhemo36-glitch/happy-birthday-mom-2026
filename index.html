@@ -274,10 +274,15 @@
       playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
       events: {
         onReady: function (e) {
+          console.log('DEBUG onReady');
           e.target.loadVideoById({ videoId: 'OXTjXQBUZs0', startSeconds: START_SECONDS });
         },
         onStateChange: function (e) {
+          console.log('DEBUG onStateChange', e.data, e.target.getCurrentTime(), e.target.getDuration());
           if (e.data === YT.PlayerState.PLAYING) maybeCorrectStart(e.target);
+        },
+        onError: function (e) {
+          console.log('DEBUG onError', e.data);
         }
       }
     });
