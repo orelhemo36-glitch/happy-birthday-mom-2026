@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>🎂 מזל טוב אמא 🎂</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Rubik', sans-serif;
+    background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fad0c4, #a18cd1, #ffd3a5);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    overflow-x: hidden;
+    color: #4a2c4a;
+  }
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .bg-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .floaty {
+    position: absolute;
+    bottom: -10%;
+    font-size: 24px;
+    opacity: 0.75;
+    animation: floatUp linear infinite;
+    user-select: none;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.85; }
+    100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .intro, .card {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  .intro h1 {
+    font-family: 'Suez One', serif;
+    font-size: clamp(28px, 7vw, 42px);
+    color: #6b2d5c;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.5);
+    margin-bottom: 36px;
+    line-height: 1.4;
+  }
+
+  .gift {
+    font-size: clamp(70px, 18vw, 110px);
+    display: inline-block;
+    animation: pulse 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25));
+    cursor: pointer;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.08) rotate(-3deg); }
+  }
+
+  .open-btn {
+    display: block;
+    margin: 28px auto 0;
+    padding: 16px 36px;
+    font-family: 'Rubik', sans-serif;
+    font-size: clamp(16px, 4vw, 19px);
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6fa5, #c06ce0);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(192, 60, 150, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .open-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 12px 26px rgba(192, 60, 150, 0.55); }
+  .open-btn:active { transform: translateY(0) scale(0.97); }
+
+  .hidden { display: none !important; }
+
+  .card {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 28px;
+    padding: 30px 24px 34px;
+    box-shadow: 0 20px 50px rgba(120, 50, 100, 0.25);
+    animation: cardIn 0.7s ease both;
+  }
+  @keyframes cardIn {
+    0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .balloons {
+    font-size: clamp(26px, 6vw, 34px);
+    margin-bottom: 6px;
+    letter-spacing: 8px;
+  }
+
+  .card h2 {
+    font-family: 'Suez One', serif;
+    font-size: clamp(26px, 6vw, 34px);
+    color: #6b2d5c;
+    margin: 4px 0 22px;
+  }
+
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    margin-bottom: 26px;
+    background: #000;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .message {
+    text-align: center;
+    font-size: clamp(16px, 4vw, 18.5px);
+    line-height: 1.95;
+    color: #4a2c4a;
+    background: rgba(255,255,255,0.55);
+    border-radius: 18px;
+    padding: 22px 18px;
+  }
+  .message p { margin: 0 0 16px; }
+  .message p:last-of-type { margin-bottom: 0; }
+
+  .signature {
+    margin-top: 18px !important;
+    font-family: 'Suez One', serif;
+    font-size: clamp(20px, 5vw, 24px);
+    color: #b5388e;
+  }
+
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 16px;
+    z-index: 50;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-hearts" id="bgHearts"></div>
+
+<div class="container">
+
+  <div id="intro" class="intro">
+    <h1>🎉 ליום הולדת של אמא היקרה שלי 🎉</h1>
+    <div class="gift" id="giftBtn">🎁</div>
+    <button class="open-btn" id="openBtn">פתחי את המתנה אמא ❤️</button>
+  </div>
+
+  <div id="card" class="card hidden">
+    <div class="balloons">🎈🎂🎈</div>
+    <h2>מזל טוב אמא! ❤️</h2>
+
+    <div class="video-wrap" id="videoWrap"></div>
+
+    <div class="message">
+      <p>לאמא שלי, אני אוהב אותך המון, ושיהיה לך מלא מזל טוב ליום הולדת שלך. 🎂</p>
+      <p>זה לא מובן מאליו שאת תמיד שם בשבילי בכל דרך שאני הולך, תמיד בשבילי לכל דבר ותומכת בי, לא משנה לאיפה אני הולך ומה אני עושה.</p>
+      <p>אז רציתי להגיד לך שלא יכלתי לבקש אמא יותר טובה ממך. אני קיבלתי את האמא הכי טובה בעולם, וזה זכות להיות הבן שלך.</p>
+      <p>תודה על הערכים שנתת לי ועל הכל. שתמיד תהיי מאושרת, ושלכל מקום שתלכי המזל יהיה איתך.</p>
+      <p>מאחל לך רק טוב כל החיים, ושכל דרך שתבחרי השם יהיה איתך.</p>
+      <p>אני אוהב אותך מאוד, ומאחל לך את כל הטוב שבעולם. ❤️</p>
+      <p class="signature">באהבה, אוראל 💛</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Ambient floating hearts/balloons in the background
+  var emojis = ['❤️','🎈','✨','🎉','💛','🎂'];
+  var bgHearts = document.getElementById('bgHearts');
+  function spawnFloaty() {
+    var el = document.createElement('div');
+    el.className = 'floaty';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (16 + Math.random() * 22) + 'px';
+    var duration = 8 + Math.random() * 9;
+    el.style.animationDuration = duration + 's';
+    bgHearts.appendChild(el);
+    setTimeout(function () { el.remove(); }, duration * 1000 + 500);
+  }
+  setInterval(spawnFloaty, 600);
+  for (var i = 0; i < 8; i++) setTimeout(spawnFloaty, i * 250);
+
+  function launchConfetti() {
+    var colors = ['#ff6fa5', '#c06ce0', '#ffd166', '#7bd389', '#ffffff'];
+    for (var i = 0; i < 60; i++) {
+      (function () {
+        var c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        document.body.appendChild(c);
+        setTimeout(function () { c.remove(); }, 5000);
+      })();
+    }
+  }
+
+  function openGift() {
+    document.getElementById('intro').classList.add('hidden');
+    document.getElementById('card').classList.remove('hidden');
+    launchConfetti();
+
+    var videoWrap = document.getElementById('videoWrap');
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/OXTjXQBUZs0?autoplay=1&playsinline=1&rel=0';
+    iframe.title = 'מתנת יום הולדת';
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+    iframe.allowFullscreen = true;
+    videoWrap.appendChild(iframe);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('openBtn').addEventListener('click', openGift);
+  document.getElementById('giftBtn').addEventListener('click', openGift);
+</script>
+
+</body>
+</html>
