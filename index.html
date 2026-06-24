@@ -252,6 +252,22 @@
   var START_SECONDS = 24;
   var ytPlayer = null;
   var pendingPlayerCreate = false;
+  var correctionAttempts = 0;
+
+  // A seekTo() called from onReady (or right as PLAYING first fires) is often a
+  // silent no-op because the player hasn't buffered enough yet. Re-check a few
+  // times with a short gap instead of trusting a single seek call.
+  function maybeCorrectStart(player) {
+    if (correctionAttempts >= 5) return;
+    var dur = player.getDuration();
+    var t = player.getCurrentTime();
+    var isRealVideo = dur > 60; // pre-roll ads report a short duration
+    if (isRealVideo && t < START_SECONDS - 1) {
+      correctionAttempts++;
+      player.seekTo(START_SECONDS, true);
+      setTimeout(function () { maybeCorrectStart(player); }, 800);
+    }
+  }
 
   function createPlayer() {
     ytPlayer = new YT.Player('ytplayer', {
@@ -259,8 +275,10 @@
       playerVars: { autoplay: 1, start: START_SECONDS, playsinline: 1, rel: 0 },
       events: {
         onReady: function (e) {
-          e.target.seekTo(START_SECONDS, true);
           e.target.playVideo();
+        },
+        onStateChange: function (e) {
+          if (e.data === YT.PlayerState.PLAYING) maybeCorrectStart(e.target);
         }
       }
     });
