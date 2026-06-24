@@ -264,7 +264,10 @@
           e.target.playVideo();
         },
         onStateChange: function (e) {
-          if (!forcedSeek && e.data === YT.PlayerState.PLAYING && e.target.getCurrentTime() < START_SECONDS - 5) {
+          if (forcedSeek || e.data !== YT.PlayerState.PLAYING) return;
+          // Ads report a short duration; only force-seek once the real song (long duration) is playing
+          var isRealVideo = e.target.getDuration() > 60;
+          if (isRealVideo && e.target.getCurrentTime() < START_SECONDS - 3) {
             forcedSeek = true;
             e.target.seekTo(START_SECONDS, true);
           }
